@@ -1,0 +1,34 @@
+package technical_360Ttask;
+import java.io.*;
+import java.net.*;
+
+public class Client {
+    public static void main(String[] args) {
+        try {
+            // Create a socket to connect to the server (Player1)
+            Socket serverSocket = new Socket("localhost", 8000);
+
+            // Create input and output streams for communication
+            BufferedReader in = new BufferedReader(new InputStreamReader(serverSocket.getInputStream()));
+            PrintWriter out = new PrintWriter(serverSocket.getOutputStream(), true);
+
+            // Start the communication loop
+            int messageCounter = 0;
+            while (messageCounter < 10) {
+                String message = "Message " + (messageCounter + 1);
+                System.out.println("Player1 says: " + message );
+                out.println(message);
+                String replyMessage = in.readLine();
+                System.out.println("Player2 replies: " + replyMessage);
+                messageCounter++;
+                Thread.sleep(1000);
+            }
+
+            // Close the connection
+            serverSocket.close();
+
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}

@@ -1,0 +1,40 @@
+package technical_360Ttask;
+
+public class PlayerController {
+
+	private Player player1;
+    private Player player2;
+    private PlayerView view;
+
+    
+ // Constructor to initialize the players and view
+
+    public PlayerController(String playerName1, String playerName2) {
+        player1 = new Player(playerName1);
+        player2 = new Player(playerName2);
+        view = new PlayerView();
+    }
+
+    public void startCommunication() {
+        for (int sentMessages = 1; sentMessages <= 10; sentMessages++) {
+            String message = "Message " + (sentMessages);
+            view.displayMessage(player1.getName(), message);
+            player1.incrementMessageCounter();
+            player2.incrementMessageCounter();
+            String replyMessage = message + " - Sent messages: " + "Message No : " + player2.getMessageCounter();
+            view.displayReplyMessage(player2.getName(), replyMessage);
+
+            // Wait for a second before sending the next message
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if (player2.getMessageCounter() >= 10) {
+                view.displayCommunicationStopped();
+                break;
+            }
+        }
+    }
+}

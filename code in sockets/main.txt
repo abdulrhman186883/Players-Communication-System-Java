@@ -1,0 +1,49 @@
+package technical_360Ttask;
+
+public class main {
+
+	public static void main(String[] args) {
+
+		        // Create and start the server (Player1)
+		        Thread serverThread = new Thread(() -> {
+		            System.out.println("Starting Player1 (Server)...");
+		            Server.main(args);
+		        });
+
+		        // Create and start the client (Player2)
+		        Thread clientThread = new Thread(() -> {
+		            try {
+		                // Sleep for a moment to ensure that the server (Player1) starts first
+		                Thread.sleep(500);
+		            } catch (InterruptedException e) {
+		                e.printStackTrace();
+		            }
+		            System.out.println("Starting Player2 (Client)...");
+		            Client.main(args);
+		        });
+
+		        // Start both threads
+		        serverThread.start();
+		        clientThread.start();
+
+		        try {
+		            // Wait for both threads to finish
+		            serverThread.join();
+		            clientThread.join();
+		        } catch (InterruptedException e) {
+		            e.printStackTrace();
+		        }
+
+		        System.out.println("Both Player1 (Server) and Player2 (Client) have completed their communication.");
+		    }
+		}
+
+
+
+
+
+//reference for sockets use 
+/* https://www.baeldung.com/a-guide-to-java-sockets */
+
+
+

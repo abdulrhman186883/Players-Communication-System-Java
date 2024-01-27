@@ -1,0 +1,26 @@
+
+public class Player {
+    private String name;
+    private int messageCounter;
+
+    // Constructor with name as a parameter to initialize the Player
+    public Player(String name) {
+        this.name = name;
+        this.messageCounter = 0;
+    }
+
+    // Get the name of the Player
+    public String getName() {
+        return name;
+    }
+
+    // Increment the message counter when a new message is sent or received
+    public void incrementMessageCounter() {
+        this.messageCounter++;
+    }
+
+    // Get the current message count
+    public int getMessageCounter() {
+        return messageCounter;
+    }
+}

@@ -1,0 +1,36 @@
+package technical_360Ttask;
+
+public class main {
+
+	public static void main(String[] args) {
+		
+		
+		  // Creating two Player instances
+        Player player1 = new Player("Player 1");
+        Player player2 = new Player("Player 2");
+        
+        
+
+      for (int sentMessages = 1; sentMessages <= 10; sentMessages++) {
+    	  String message = "Message " + (sentMessages);
+          player1.communicate(message, player2);
+          
+          // Wait for a second before sending the next message
+          try {
+              Thread.sleep(1000);
+          } catch (InterruptedException e) {
+              e.printStackTrace();
+          }
+          
+          if (player2.getMessageCounter() >= 10) {
+              System.out.println("Communication stopped. Initiator and receiver have exchanged 10 messages.");
+              break;
+          }
+          
+          
+          
+      }
+        
+	}
+
+}

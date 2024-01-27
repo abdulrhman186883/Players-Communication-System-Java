@@ -1,0 +1,29 @@
+package technical_360Ttask;
+
+public class Player {
+    private String name;
+    private int messageCounter;
+
+    // Default constructor with default values
+    public Player(String name) {
+        this.name = name;
+        this.messageCounter = 0;
+    }
+
+    
+ // Get the name of the Player if it is no 1 or no 2   
+    public String getName() {
+        return name;
+    }
+
+    
+    // Increment the message counter when a new message is sent or received
+    public void incrementMessageCounter() {
+        this.messageCounter++;
+    }
+
+    // Get the current message count   
+    public int getMessageCounter() {
+        return messageCounter;
+    }
+}

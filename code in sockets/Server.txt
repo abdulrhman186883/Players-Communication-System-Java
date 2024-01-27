@@ -1,0 +1,42 @@
+package technical_360Ttask;
+
+import java.io.*;
+import java.net.*;
+
+public class Server {
+    public static void main(String[] args) {
+        try {
+            // Create a server socket to listen for incoming connections
+            ServerSocket serverSocket = new ServerSocket(8000);
+
+            // Wait for a connection from the client (Player2)
+            System.out.println("Waiting for Player2 to connect...");
+            Socket clientSocket = serverSocket.accept();
+            System.out.println("Player2 connected!");
+
+            // Create input and output streams for communication
+            BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+
+            // Start the communication loop
+            int messageCounter = 0;
+            while (messageCounter < 10) {
+                String receivedMessage = in.readLine();
+                System.out.println("Player1 says: " + receivedMessage);
+                String replyMessage = receivedMessage + " - Sent messages: " + "Message No : " + (messageCounter + 1);
+                System.out.println("Player2 replies: " + replyMessage);
+                out.println(replyMessage);
+                messageCounter++;
+                Thread.sleep(1000);
+            }
+
+            // Close the connection and server socket
+            clientSocket.close();
+            serverSocket.close();
+            System.out.println("Communication stopped. Initiator and receiver have exchanged 10 messages.");
+
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}

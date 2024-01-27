@@ -1,0 +1,10 @@
+package technical_360Ttask;
+
+public class main {
+
+	public static void main(String[] args) {
+		
+		        PlayerController playerController = new PlayerController("Player 1", "Player 2");
+		        playerController.startCommunication();
+		    }
+		}

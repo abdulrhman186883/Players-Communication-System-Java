@@ -1,0 +1,31 @@
+package technical_360Ttask;
+
+public class Player {
+    private String name;
+    private int messageCounter;
+
+   //default constructor with default values 
+    public Player(String name) {
+        this.name = name;
+        this.messageCounter = 0;
+    }
+
+    public void communicate(String message, Player recipient) {
+        System.out.println(this.name + " says: " + message);
+        recipient.receiveMessage(message);
+    }
+    
+    private void receiveMessage(String message) {
+        this.messageCounter++;
+        String replyMessage = message + " - Sent messages: " + "Message No : " + this.messageCounter;
+        System.out.println(this.name + " replies: " + replyMessage);
+    }
+    
+    
+    // access function to get the messages count 
+    public int getMessageCounter() {
+        return messageCounter;
+    }
+    
+    
+    }

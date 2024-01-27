@@ -1,0 +1,16 @@
+public class PlayerView {
+    // Display the message sent by a Player
+    public void displayMessage(String playerName, String message) {
+        System.out.println(playerName + " says: " + message);
+    }
+
+    // Display the reply message received by a Player
+    public void displayReplyMessage(String playerName, String replyMessage) {
+        System.out.println(playerName + " replies: " + replyMessage);
+    }
+
+    // Display a message indicating that the communication has stopped
+    public void displayCommunicationStopped() {
+        System.out.println("Communication stopped. Initiator and receiver have exchanged 10 messages.");
+    }
+}
